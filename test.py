@@ -1,28 +1,18 @@
 import unittest
-from main import create_login  
+from main import create_login
+text = 'lisa434@mail.ru'
+create_login(text)
+def test_valid_postal_code():
+    assert create_login(text) is True
 
-# Ввод пользователя остаётся — как ты хотел
-text = input("Введите логин: ")
-req = create_login(text)
-class TestAdd(unittest.TestCase):  
-    
-    def test_add_positive(self):
-        self.assertEqual(req, 0) 
+def test_postal_code_with_letters():
+    assert create_login(text) is False
 
-    def test_len_str(self):
-        self.assertEqual(req, 1)  
+def test_short_postal_code():
+    assert create_login(text) is False
 
-    def test_front_characters(self):
-        self.assertEqual(req, 2) 
-
-    def test_back_characters(self):  
-        self.assertEqual(req, 3)  
-
-    def test_impossible_characters(self): 
-        self.assertEqual(req, 4)  
-
-    def test_valid_value(self):  
-        self.assertEqual(req, 5) 
+def test_long_postal_code():
+   create_login(text) is False
 
 if __name__ == "__main__":
     unittest.main()
