@@ -3,13 +3,23 @@ def check(text):
     valid = r'^(?![._-])(?!.*[._-]{2})[A-Za-z0-9._-]{6,18}(?![._-])@[A-Za-z0-9-]+\.(com|org|net|ru|info|biz|io|edu|gov)$'
     return bool(re.match(valid,text))
 
+def error_dog(text):
+    if text.count("@")>1:
+        print("Ошибка @")
+        return False
+
 def len_str(variable):#ошибка длинны
     count = 0
-    for i in range(len(variable)):
-        if variable[i] != '@':
-            count += 1
-        else:
-            break
+    if variable.count("@")>1:
+        index = variable.rfind("@")
+        for i in range(index):
+            count+=1
+    else:
+        for i in range(len(variable)):
+            if variable[i] != '@':
+                count += 1
+            else:
+                break
 
     if 6 < count < 18:
         return True
@@ -39,7 +49,7 @@ def impossible_characters(text):#недопустимые повторения
         return False  # ошибка задвоение спец символа
     
 def valid_value(text):#недопустимые значения
-    allowed = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789._-"
+    allowed = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@._-"
     for ch in text:
         if ch not in allowed:
             print("Ошибка некорректных символов")
@@ -49,10 +59,8 @@ def valid_value(text):#недопустимые значения
 
 def create_login(text):
     if check(text)==True:
-        print("Логин подходит по шаблону")
         return True
     else:
-        print("Ошибка! Логин не подходит")
         return False
         
 
