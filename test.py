@@ -12,7 +12,7 @@ def test_short_postal_code():
     assert create_login(text) is False
 
 def test_long_postal_code():
-   create_login(text) is False
+   assert create_login(text) is False
 
 if __name__ == "__main__":
     unittest.main()

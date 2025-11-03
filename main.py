@@ -47,26 +47,13 @@ def valid_value(text):#недопустимые значения
     return True
 
 
-def creatig_error(text):
-    if len_str(text)==False:
-        return False
-    elif front_characters(text)==False:
-        return False
-    elif back_characters(text)==False:
-        return False
-    elif impossible_characters(text)==False:
-        return False
-    elif valid_value(text)==False:
-        return False
-    
-
 def create_login(text):
     if check(text)==True:
         print("Логин подходит по шаблону")
         return True
     else:
         print("Ошибка! Логин не подходит")
-        creatig_error(text)
+        return False
         
 
 if __name__ == "__main__":
