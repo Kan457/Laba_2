@@ -7,6 +7,8 @@ def error_dog(text):
     if text.count("@")>1:
         print("Ошибка @")
         return False
+    else:
+        return True
 
 def len_str(variable):#ошибка длинны
     count = 0
