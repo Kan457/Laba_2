@@ -1,7 +1,8 @@
 import re
+valid = re.compile(r'(?![._-])(?!.*[._-]{2})[A-Za-z0-9._-]{6,18}(?<![._-])@[A-Za-z0-9-]+\.(com|org|net|ru|info|biz|io|edu|gov)')
+
 def check(text):
-    valid = r'^(?![._-])(?!.*[._-]{2})[A-Za-z0-9._-]{6,18}(?<![._-])@[A-Za-z0-9-]+\.(com|org|net|ru|info|biz|io|edu|gov)$'
-    return bool(re.match(valid,text))
+    return bool(re.search(valid,text))
 
 def error_dog(text):
     if text.count("@")>1:
